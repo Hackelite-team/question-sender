@@ -111,7 +111,12 @@ f3b1=Button(frame3,text="Submit",state=DISABLED,bg="black",fg="white",command=pr
 f3b1.grid(row=6,column=0)
 
 #frame 4
+global tmail,tpass
+tmail=''
+tpass=''
+
 def mailget():
+    global tmail,tpass
     tpass=enttt.get()
     tmail=entt.get()
 
@@ -292,8 +297,7 @@ def openxt(l,options):
             global tmail,tpass
             frame2f=LabelFrame(final,text="PROGRESS",bg="#CA6F1E")
             frame2f.grid(padx=10,pady=10)
-            lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
-            lf.grid(row=0,column=0,ipadx=100,ipady=100)
+            
             if ent1f.get():data[0]=int(ent1f.get())
             if ent2f.get():data[1]=int(ent2f.get())
             if ent3f.get():data[2]=int(ent3f.get())
@@ -307,7 +311,6 @@ def openxt(l,options):
             connect.starttls()
             mail=tmail
             pas=tpass
-            print(mail,pas)
             connect.login(entt.get(),enttt.get())
             for i in range(numberofstu):
                 dupm1,dupm2,dupm5,dupm10,dupm13,dupm16=[],[],[],[],[],[]
@@ -319,7 +322,7 @@ def openxt(l,options):
                 dupm16+=m16
                 content=""
                 if m1:
-                    content+="\n***\n1 Mark Questions:\n\n"
+                    content+="\n"+('-'*10)+"\n1 Mark Questions:\n\n"
                     for j in range(data[0]):
                         if dupm1:
                             q=random.choice(dupm1)
@@ -327,7 +330,7 @@ def openxt(l,options):
                             content=content+f"\n{j+1}. "+q
                 
                 if m2:
-                    content+="\n***\n2 Mark Questions:\n\n"
+                    content+="\n"+('-'*10)+"\n2 Mark Questions:\n\n"
                     for j in range(data[1]):
                         if dupm2:
                             q=random.choice(dupm2)
@@ -335,7 +338,7 @@ def openxt(l,options):
                             content=content+f"\n{j+1}. "+q
                     
                 if m5:
-                    content+="\n***\n5 Mark Questions:\n\n"
+                    content+="\n"+('-'*10)+"\n5 Mark Questions:\n\n"
                     for j in range(data[2]):
                         if dupm5:
                             q=random.choice(dupm5)
@@ -343,7 +346,7 @@ def openxt(l,options):
                             content=content+f"\n{j+1}. "+q
                     
                 if m10:
-                    content+="\n***\n10 Mark Questions:\n\n"
+                    content+="\n"+('-'*10)+"\n10 Mark Questions:\n\n"
                     for j in range(data[3]):
                         if dupm10:
                             q=random.choice(dupm10)
@@ -351,7 +354,7 @@ def openxt(l,options):
                             content=content+f"\n{j+1}. "+q
                 
                 if m13:
-                    content+="\n***\n13 Mark Questions:\n\n"
+                    content+="\n"+('-'*10)+"\n13 Mark Questions:\n\n"
                     for j in range(data[4]):
                         if dupm13:
                             q=random.choice(dupm13)
@@ -359,7 +362,7 @@ def openxt(l,options):
                             content=content+f"\n{j+1}. "+q
                 
                 if m16:
-                    content+="\n***\n16 Mark Questions:\n"+"\n"
+                    content+="\n"+('-'*10)+"\n16 Mark Questions:\n"+"\n"
                     for j in range(data[5]):
                         if dupm16:
                             q=random.choice(dupm16)
@@ -368,6 +371,8 @@ def openxt(l,options):
                 
                 connect.sendmail(mailid[i],mailid[i],content)
                 print(mailid[i])
+                lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                lf.grid(row=0,column=0,ipadx=100,ipady=100)
                 dupm1.clear()
                 dupm2.clear()
                 dupm5.clear()
@@ -376,5 +381,24 @@ def openxt(l,options):
                 dupm16.clear()
             lf.config(text="E-mail sent successfully!")
             connect.quit()
+        
+        butsub=Button(frame1f,text="SUBMIT",font=(" Verdana",12,"bold italic"),bg="#DC7633",command=sub)
+        butsub.grid(row=6,column=0,columnspan=4,padx=10,pady=10)
+
+    butsub=Button(root,text="SUBMIT",bg="#99aab5",font=(" Verdana",12,"bold italic"),command=getdata)
+    butsub.grid(row=3,column=0,padx=10,pady=10,columnspan=2)
+
+    if options[0]==0:
+        but1r.config(state=DISABLED)
+    if options[1]==0:
+        but2r.config(state=DISABLED)
+    if options[2]==0:
+        but3r.config(state=DISABLED)
+    if options[3]==0:
+        but4r.config(state=DISABLED)
+    if options[4]==0:
+        but5r.config(state=DISABLED)
+    if options[5]==0:
+        but6r.config(state=DISABLED)
 
 window.mainloop()
