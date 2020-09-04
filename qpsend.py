@@ -60,6 +60,7 @@ var4 = IntVar()
 var5 = IntVar()
 var6 = IntVar()
 yes=1
+
 def pr():
     global yes
     options.append(var6.get())
@@ -105,4 +106,27 @@ check6.grid(row=0,column=0,pady=10)
 
 f3b1=Button(frame3,text="Submit",state=DISABLED,bg="black",fg="white",command=pr)
 f3b1.grid(row=6,column=0)
+
+#frame 4
+def mailget():
+    tpass=enttt.get()
+    tmail=entt.get()
+
+    
+labt=Label(frame4,text="ENTER TEACHER'S MAIL ID",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
+labtt=Label(frame4,text="Enter your password",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
+entt=Entry(frame4,width=50,borderwidth=7)
+enttt=Entry(frame4,width=50,borderwidth=7)
+butt=Button(frame4,text="SUBMIT",font=(" Verdana",12,"bold italic"),command=mailget)
+labwar=Label(frame4,text="PLEASE REMOVE TWO STEP VERIFICATION",font=(" Verdana",12,"bold italic underline"),bg="#9B59B6")
+labwar2=Label(frame4,text="WE WON'T COLLECT ANY OF YOUR INFORMATION \n YOUR DATA REMAINS PRIVATE WITH YOU!!",font=(" Verdana",12,"bold italic underline"),bg="#9B59B6") 
+labt.pack(padx=10,pady=10)
+entt.pack(padx=10,pady=10)
+labtt.pack(padx=10,pady=10)
+enttt.pack(padx=10,pady=10)
+butt.pack(padx=10,pady=10)
+labwar.pack(padx=10,pady=10)
+labwar2.pack(padx=10,pady=10)
+
+
 window.mainloop()
