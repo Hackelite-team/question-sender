@@ -286,5 +286,19 @@ def openxt(l,options):
         lab6f.grid(row=4,column=2,padx=10,pady=5)
         lab66f.grid(row=5,column=2,padx=10)
         ent6f.grid(row=4,column=3,padx=10,pady=5)
+        
+        def sub():
+            global tmail,tpass
+            frame2f=LabelFrame(final,text="PROGRESS",bg="#CA6F1E")
+            frame2f.grid(padx=10,pady=10)
+            lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+            lf.grid(row=0,column=0,ipadx=100,ipady=100)
+            if ent1f.get():data[0]=int(ent1f.get())
+            if ent2f.get():data[1]=int(ent2f.get())
+            if ent3f.get():data[2]=int(ent3f.get())
+            if ent4f.get():data[3]=int(ent4f.get())
+            if ent5f.get():data[4]=int(ent5f.get())
+            if ent6f.get():data[5]=int(ent6f.get())
+            numberofstu=a
 
 window.mainloop()
