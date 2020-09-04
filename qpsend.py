@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import random
+import smtplib
 
 window=Tk()
 window.title("Question paper Setter")
@@ -300,5 +301,80 @@ def openxt(l,options):
             if ent5f.get():data[4]=int(ent5f.get())
             if ent6f.get():data[5]=int(ent6f.get())
             numberofstu=a
+            
+            connect=smtplib.SMTP('smtp.gmail.com',25)
+            connect.ehlo()
+            connect.starttls()
+            mail=tmail
+            pas=tpass
+            print(mail,pas)
+            connect.login(entt.get(),enttt.get())
+            for i in range(numberofstu):
+                dupm1,dupm2,dupm5,dupm10,dupm13,dupm16=[],[],[],[],[],[]
+                dupm1+=m1
+                dupm2+=m2
+                dupm5+=m5
+                dupm10+=m10
+                dupm13+=m13
+                dupm16+=m16
+                content=""
+                if m1:
+                    content+="\n***\n1 Mark Questions:\n\n"
+                    for j in range(data[0]):
+                        if dupm1:
+                            q=random.choice(dupm1)
+                            dupm1.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                
+                if m2:
+                    content+="\n***\n2 Mark Questions:\n\n"
+                    for j in range(data[1]):
+                        if dupm2:
+                            q=random.choice(dupm2)
+                            dupm2.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                    
+                if m5:
+                    content+="\n***\n5 Mark Questions:\n\n"
+                    for j in range(data[2]):
+                        if dupm5:
+                            q=random.choice(dupm5)
+                            dupm5.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                    
+                if m10:
+                    content+="\n***\n10 Mark Questions:\n\n"
+                    for j in range(data[3]):
+                        if dupm10:
+                            q=random.choice(dupm10)
+                            dupm10.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                
+                if m13:
+                    content+="\n***\n13 Mark Questions:\n\n"
+                    for j in range(data[4]):
+                        if dupm13:
+                            q=random.choice(dupm13)
+                            dupm13.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                
+                if m16:
+                    content+="\n***\n16 Mark Questions:\n"+"\n"
+                    for j in range(data[5]):
+                        if dupm16:
+                            q=random.choice(dupm16)
+                            dupm16.remove(q)
+                            content=content+f"\n{j+1}. "+q
+                
+                connect.sendmail(mailid[i],mailid[i],content)
+                print(mailid[i])
+                dupm1.clear()
+                dupm2.clear()
+                dupm5.clear()
+                dupm10.clear()
+                dupm13.clear()
+                dupm16.clear()
+            lf.config(text="E-mail sent successfully!")
+            connect.quit()
 
 window.mainloop()
