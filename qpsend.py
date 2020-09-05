@@ -368,7 +368,7 @@ def openxt(l,options):
                                 q=random.choice(dupm16)
                                 dupm16.remove(q)
                                 content=content+f"\n{j+1}. "+q
-                    
+                                                    
                     connect.sendmail(mailid[i],mailid[i],content)
                     print(mailid[i])
                     lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
@@ -381,8 +381,12 @@ def openxt(l,options):
                     dupm16.clear()
                 lf.config(text="E-mail sent successfully!")
                 connect.quit()
+            except smtplib.SMTPAuthenticationError:
+                lf=Label(frame2f,text="E-mail not sent \n Please check your login credentials \n and try again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                lf.grid(row=0,column=0,ipadx=100,ipady=100)
+            
             except:
-                lf=Label(frame2f,text="E-mail not sent successfully!\n Please ttry again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                 lf=Label(frame2f,text="E-mail not sent !\n Please ttry again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
         
         butsub=Button(frame1f,text="SUBMIT",font=(" Verdana",12,"bold italic"),bg="#DC7633",command=sub)
