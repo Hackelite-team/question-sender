@@ -5,8 +5,11 @@ import random
 import smtplib
 
 mainwindow=Tk()
+mainwindow.title("Question paper (SET + SEND)er")
 windowframe=ttk.Notebook(mainwindow)
 windowframe.pack(fill=BOTH,expand=1)
+p1=PhotoImage(file="D:\Programs_vscode\IDLE\paper (1).ico")
+mainwindow.iconphoto(False,p1)
 window=Frame(windowframe)
 window.pack(fill=BOTH,expand=1)
 windowframe.add(window,text="Everything starts with the first step... and here's yours")
@@ -32,7 +35,7 @@ def fun():
 
 l1=Label(frame1,text="Enter Number of students : ",font=(" Verdana",12,"bold italic"),bg="#ed5a5a")
 e1=Entry(frame1,width=50,borderwidth=7)
-b1=Button(frame1,text="submit",command=fun,state=ACTIVE,bg="white",fg="black")
+b1=Button(frame1,text="submit",command=fun,state=ACTIVE,font=(" Verdana",12,"bold italic"))
 l1.grid(row=0,column=0,pady=10)
 e1.grid(row=1,column=0,pady=10)
 b1.grid(row=2,column=0,pady=10)
@@ -54,7 +57,7 @@ def enter():
 count=1
 lab1=Label(frame2,text="Please Enter the mail ID of student 1",font=("Verdana",12,"bold italic"),bg="#ed5a5a")
 enty1=Entry(frame2,width=60,borderwidth=7)
-but1=Button(frame2,text="Submit",command=enter,state=DISABLED)
+but1=Button(frame2,text="Submit",command=enter,state=DISABLED,font=(" Verdana",12,"bold italic"))
 lab1.grid(row=0,column=0,pady=10)
 enty1.grid(row=1,column=0,pady=10)
 but1.grid(row=2,column=0,pady=10)
@@ -95,7 +98,7 @@ check4.grid(row=4,column=0,pady=13,padx=120)
 check5.grid(row=5,column=0,pady=13,padx=120)
 check6.grid(row=0,column=0,pady=13,padx=120)
 
-f3b1=Button(frame3,text="Submit",state=DISABLED,command=pr)
+f3b1=Button(frame3,text="Submit",state=DISABLED,command=pr,font=(" Verdana",12,"bold italic"))
 f3b1.grid(row=6,column=0)
 
 #frame 4
