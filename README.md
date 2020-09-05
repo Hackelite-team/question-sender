@@ -17,7 +17,7 @@ DESCRIPTION: The project has three sections.
 CHALLENGE: The challenge that we came across when building this project is while importing smtplib module from python. We dealt with the problem in mail port number as it works with different port number for different regions. 
 
 TECHNOLOGIES: This project has been built by using PYTHON PROGRAMMING language.
-              The techologies used in this project are TKINTER,SMTPLIB,RANDOM from PYTHON.
+              The technologies used in this project are TKINTER,SMTPLIB,RANDOM from PYTHON.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
