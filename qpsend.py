@@ -10,7 +10,7 @@ windowframe.pack(fill=BOTH,expand=1)
 window=Frame(windowframe)
 window.pack(fill=BOTH,expand=1)
 windowframe.add(window,text="Everything starts with the first step... and here's yours")
-mainwindow.geometry("865x620+0+0")
+mainwindow.geometry("930x650+0+0")
 window.config(bg="#9B59B6")
 frame1=LabelFrame(window,text="number of students",padx=60,pady=10,bg="#9B59B6")
 frame1.grid(row=0,column=0,padx=5,pady=10)
@@ -19,10 +19,10 @@ frame2=LabelFrame(window,text="Mail id of students",padx=5,pady=10,bg="#9B59B6")
 frame2.grid(row=0,column=1,padx=5,pady=10)
 
 frame3=LabelFrame(window,text="Selection",padx=5,pady=10,bg="#9B59B6")
-frame3.grid(row=1,column=1,padx=5,pady=10)
+frame3.grid(row=1,column=0,padx=0,pady=10)
 
 frame4=LabelFrame(window,text="TEACHER'S MAIL",padx=10,pady=10,bg="#9B59B6")
-frame4.grid(row=1,column=0,padx=5,pady=10)
+frame4.grid(row=1,column=1,padx=0,pady=10)
 
 def fun():
     global a,but1
@@ -70,25 +70,8 @@ var6 = IntVar()
 yes=1
 
 def pr():
-    global yes
-    options.append(var6.get())
-    options.append(var1.get())
-    options.append(var2.get())
-    options.append(var3.get())
-    options.append(var4.get())
-    options.append(var5.get())
-    f3b1.config(state=DISABLED,fg="white",bg="black")
-    op=[]
-    for i in sorted(options):
-        if i!=0:
-            op.append(str(i)+" Marks")
-    yes=messagebox.askyesno("confirmation","The Numbrer of Students are "+str(count-1)+"\n"+"\n"+"Their mail IDs are"+str(l)+"\n"+"\n"+"the question types are"+str(op)
-                        +"\n"+"\n"+"Press \"YES\" to continue or \"NO\" to start from begining")
-    if yes:
-        openxt(l,options)
-        print(options)
-    else:
-        window.quit()
+    f3b1.config(state=DISABLED )
+    butt.config(state=ACTIVE)
 
 check6=Checkbutton(frame3,text=" 1 Marks",font=("Verdana",12,"bold italic"),bg="#9B59B6",variable=var6,onvalue=1)
 check1=Checkbutton(frame3,text=" 2 Marks",font=("Verdana",12,"bold italic"),bg="#9B59B6",variable=var1,onvalue=2)
@@ -117,13 +100,31 @@ f3b1.grid(row=6,column=0)
 
 #frame 4
 def mailget():
-    return
+    options.append(var6.get())
+    options.append(var1.get())
+    options.append(var2.get())
+    options.append(var3.get())
+    options.append(var4.get())
+    options.append(var5.get())
+    f3b1.config(state=DISABLED)
+    op=[]
+    for i in sorted(options):
+        if i!=0:
+            op.append(str(i)+" Marks")
+    butt.config(state=DISABLED)
+    yes=messagebox.askyesno("confirmation","The Numbrer of Students are "+str(count-1)+"\n"+"\n"+"Their mail IDs are"+str(l)+"\n"+"\n"+"the question types are"+str(op)
+                        +"\n"+"\n"+"Press \"YES\" to continue or \"NO\" to start from begining")
+    if yes:
+        openxt(l,options)
+    else:
+        window.quit()
+        
 
 labt=Label(frame4,text="ENTER TEACHER'S MAIL ID",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
 labtt=Label(frame4,text="Enter your password",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
 entt=Entry(frame4,width=50,borderwidth=7)
 enttt=Entry(frame4,width=50,borderwidth=7)
-butt=Button(frame4,text="SUBMIT",font=(" Verdana",12,"bold italic"),command=mailget)
+butt=Button(frame4,text="SUBMIT",state=DISABLED,font=(" Verdana",12,"bold italic"),command=mailget)
 labwar=Label(frame4,text="PLEASE REMOVE TWO STEP VERIFICATION",font=(" Verdana",12,"bold italic underline"),bg="#9B59B6")
 labwar2=Label(frame4,text="WE WON'T COLLECT ANY OF YOUR INFORMATION \n YOUR DATA REMAINS PRIVATE WITH YOU!!",font=(" Verdana",12,"bold italic underline"),bg="#9B59B6") 
 labt.pack(padx=10,pady=10)
@@ -381,17 +382,17 @@ def openxt(l,options):
                 lf.config(text="E-mail sent successfully!")
                 connect.quit()
             except smtplib.SMTPAuthenticationError:
-                lf=Label(frame2f,text="E-mail not sent \n Please check your login credentials \n and try again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                lf=Label(frame2f,text="E-mail not sent \n Please check your login credentials \n and try again!",font=("Verdana",12,"bold italic"),bg="#CA6F1E")
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
             
             except:
                 lf=Label(frame2f,text="E-mail not sent !\n Please try again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
         
-        butsub=Button(frame1f,text="SUBMIT",font=(" Verdana",12,"bold italic"),bg="#DC7633",command=sub)
+        butsub=Button(frame1f,text="SUBMIT",font=("Verdana",12,"bold italic"),bg="#DC7633",command=sub)
         butsub.grid(row=6,column=0,columnspan=4,padx=10,pady=10)
 
-    butsub=Button(root,text="SUBMIT",bg="#99aab5",font=(" Verdana",12,"bold italic"),command=getdata)
+    butsub=Button(root,text="SUBMIT",bg="#99aab5",font=("Verdana",12,"bold italic"),command=getdata)
     butsub.grid(row=3,column=0,padx=10,pady=10,columnspan=2)
 
     if options[0]==0:
