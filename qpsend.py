@@ -9,7 +9,7 @@ windowframe=ttk.Notebook(mainwindow)
 windowframe.pack(fill=BOTH,expand=1)
 window=Frame(windowframe)
 window.pack(fill=BOTH,expand=1)
-windowframe.add(window,text='1')
+windowframe.add(window,text="Everything starts with the first step... and here's yours")
 mainwindow.geometry("865x620+0+0")
 window.config(bg="#9B59B6")
 frame1=LabelFrame(window,text="number of students",padx=60,pady=10,bg="#9B59B6")
@@ -138,8 +138,7 @@ m1,m2,m5,m10,m13,m16=[],[],[],[],[],[]
 def openxt(l,options):
     root=Frame(windowframe)
     root.pack(fill=BOTH,expand=1)
-    #root.title("Step 2")
-    windowframe.add(root,text='2')
+    windowframe.add(root,text="You're almost near...")
     windowframe.hide(0)
     mainwindow.geometry("1230x600")
     root.config(bg="#16A085")
@@ -244,7 +243,7 @@ def openxt(l,options):
     def getdata():
         final=Frame(windowframe)
         final.pack(fill=BOTH,expand=1)
-        windowframe.add(final,text='3')
+        windowframe.add(final,text="Final step!")
         windowframe.hide(1)
         mainwindow.geometry("800x600")
         mailid=l
@@ -386,7 +385,7 @@ def openxt(l,options):
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
             
             except:
-                 lf=Label(frame2f,text="E-mail not sent !\n Please ttry again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                lf=Label(frame2f,text="E-mail not sent !\n Please try again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
         
         butsub=Button(frame1f,text="SUBMIT",font=(" Verdana",12,"bold italic"),bg="#DC7633",command=sub)
