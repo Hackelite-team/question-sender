@@ -1,11 +1,16 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import random
 import smtplib
 
-window=Tk()
-window.title("Question paper Setter")
-window.geometry("865x620+0+0")
+mainwindow=Tk()
+windowframe=ttk.Notebook(mainwindow)
+windowframe.pack(fill=BOTH,expand=1)
+window=Frame(windowframe)
+window.pack(fill=BOTH,expand=1)
+windowframe.add(window,text='1')
+mainwindow.geometry("865x620+0+0")
 window.config(bg="#9B59B6")
 frame1=LabelFrame(window,text="number of students",padx=60,pady=10,bg="#9B59B6")
 frame1.grid(row=0,column=0,padx=5,pady=10)
@@ -111,16 +116,9 @@ f3b1=Button(frame3,text="Submit",state=DISABLED,bg="black",fg="white",command=pr
 f3b1.grid(row=6,column=0)
 
 #frame 4
-global tmail,tpass
-tmail=''
-tpass=''
-
 def mailget():
-    global tmail,tpass
-    tpass=enttt.get()
-    tmail=entt.get()
+    return
 
-    
 labt=Label(frame4,text="ENTER TEACHER'S MAIL ID",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
 labtt=Label(frame4,text="Enter your password",font=(" Verdana",12,"bold italic"),bg="#9B59B6")
 entt=Entry(frame4,width=50,borderwidth=7)
@@ -138,9 +136,12 @@ labwar2.pack(padx=10,pady=10)
 global m1,m2,m5,m10,m13,m16
 m1,m2,m5,m10,m13,m16=[],[],[],[],[],[]
 def openxt(l,options):
-    root=Toplevel()
-    root.title("Step 2")
-    #root.geometry("800x700")
+    root=Frame(windowframe)
+    root.pack(fill=BOTH,expand=1)
+    #root.title("Step 2")
+    windowframe.add(root,text='2')
+    windowframe.hide(0)
+    mainwindow.geometry("1230x600")
     root.config(bg="#16A085")
     rframe1=LabelFrame(root,text="1 Marks",bg="#16A085")
     rframe2=LabelFrame(root,text="2 Marks",bg="#16A085")
@@ -241,9 +242,11 @@ def openxt(l,options):
     lab12r.grid(row=1,column=0,padx=10,pady=10)
 
     def getdata():
-        final=Toplevel()
-        final.title("confirmation")
-        final.geometry("800x600")
+        final=Frame(windowframe)
+        final.pack(fill=BOTH,expand=1)
+        windowframe.add(final,text='3')
+        windowframe.hide(1)
+        mainwindow.geometry("800x600")
         mailid=l
         final.config(bg="#D35400")
         frame1f=LabelFrame(final,text="Selection",bg="#D35400")
@@ -294,7 +297,6 @@ def openxt(l,options):
         ent6f.grid(row=4,column=3,padx=10,pady=5)
         
         def sub():
-            global tmail,tpass
             frame2f=LabelFrame(final,text="PROGRESS",bg="#CA6F1E")
             frame2f.grid(padx=10,pady=10)
             
@@ -305,82 +307,83 @@ def openxt(l,options):
             if ent5f.get():data[4]=int(ent5f.get())
             if ent6f.get():data[5]=int(ent6f.get())
             numberofstu=a
-            
-            connect=smtplib.SMTP('smtp.gmail.com',25)
-            connect.ehlo()
-            connect.starttls()
-            mail=tmail
-            pas=tpass
-            connect.login(entt.get(),enttt.get())
-            for i in range(numberofstu):
-                dupm1,dupm2,dupm5,dupm10,dupm13,dupm16=[],[],[],[],[],[]
-                dupm1+=m1
-                dupm2+=m2
-                dupm5+=m5
-                dupm10+=m10
-                dupm13+=m13
-                dupm16+=m16
-                content=""
-                if m1:
-                    content+="\n"+('-'*10)+"\n1 Mark Questions:\n\n"
-                    for j in range(data[0]):
-                        if dupm1:
-                            q=random.choice(dupm1)
-                            dupm1.remove(q)
-                            content=content+f"\n{j+1}. "+q
-                
-                if m2:
-                    content+="\n"+('-'*10)+"\n2 Mark Questions:\n\n"
-                    for j in range(data[1]):
-                        if dupm2:
-                            q=random.choice(dupm2)
-                            dupm2.remove(q)
-                            content=content+f"\n{j+1}. "+q
+            try:
+                connect=smtplib.SMTP('smtp.gmail.com',25)
+                connect.ehlo()
+                connect.starttls()
+                connect.login(entt.get(),enttt.get())
+                for i in range(numberofstu):
+                    dupm1,dupm2,dupm5,dupm10,dupm13,dupm16=[],[],[],[],[],[]
+                    dupm1+=m1
+                    dupm2+=m2
+                    dupm5+=m5
+                    dupm10+=m10
+                    dupm13+=m13
+                    dupm16+=m16
+                    content=""
+                    if m1:
+                        content+="\n"+('-'*10)+"\n1 Mark Questions:\n\n"
+                        for j in range(data[0]):
+                            if dupm1:
+                                q=random.choice(dupm1)
+                                dupm1.remove(q)
+                                content=content+f"\n{j+1}. "+q
                     
-                if m5:
-                    content+="\n"+('-'*10)+"\n5 Mark Questions:\n\n"
-                    for j in range(data[2]):
-                        if dupm5:
-                            q=random.choice(dupm5)
-                            dupm5.remove(q)
-                            content=content+f"\n{j+1}. "+q
+                    if m2:
+                        content+="\n"+('-'*10)+"\n2 Mark Questions:\n\n"
+                        for j in range(data[1]):
+                            if dupm2:
+                                q=random.choice(dupm2)
+                                dupm2.remove(q)
+                                content=content+f"\n{j+1}. "+q
+                        
+                    if m5:
+                        content+="\n"+('-'*10)+"\n5 Mark Questions:\n\n"
+                        for j in range(data[2]):
+                            if dupm5:
+                                q=random.choice(dupm5)
+                                dupm5.remove(q)
+                                content=content+f"\n{j+1}. "+q
+                        
+                    if m10:
+                        content+="\n"+('-'*10)+"\n10 Mark Questions:\n\n"
+                        for j in range(data[3]):
+                            if dupm10:
+                                q=random.choice(dupm10)
+                                dupm10.remove(q)
+                                content=content+f"\n{j+1}. "+q
                     
-                if m10:
-                    content+="\n"+('-'*10)+"\n10 Mark Questions:\n\n"
-                    for j in range(data[3]):
-                        if dupm10:
-                            q=random.choice(dupm10)
-                            dupm10.remove(q)
-                            content=content+f"\n{j+1}. "+q
-                
-                if m13:
-                    content+="\n"+('-'*10)+"\n13 Mark Questions:\n\n"
-                    for j in range(data[4]):
-                        if dupm13:
-                            q=random.choice(dupm13)
-                            dupm13.remove(q)
-                            content=content+f"\n{j+1}. "+q
-                
-                if m16:
-                    content+="\n"+('-'*10)+"\n16 Mark Questions:\n"+"\n"
-                    for j in range(data[5]):
-                        if dupm16:
-                            q=random.choice(dupm16)
-                            dupm16.remove(q)
-                            content=content+f"\n{j+1}. "+q
-                
-                connect.sendmail(mailid[i],mailid[i],content)
-                print(mailid[i])
-                lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                    if m13:
+                        content+="\n"+('-'*10)+"\n13 Mark Questions:\n\n"
+                        for j in range(data[4]):
+                            if dupm13:
+                                q=random.choice(dupm13)
+                                dupm13.remove(q)
+                                content=content+f"\n{j+1}. "+q
+                    
+                    if m16:
+                        content+="\n"+('-'*10)+"\n16 Mark Questions:\n"+"\n"
+                        for j in range(data[5]):
+                            if dupm16:
+                                q=random.choice(dupm16)
+                                dupm16.remove(q)
+                                content=content+f"\n{j+1}. "+q
+                    
+                    connect.sendmail(mailid[i],mailid[i],content)
+                    print(mailid[i])
+                    lf=Label(frame2f,text="Sit back and relax...\n We'll let you know once it's done!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
+                    lf.grid(row=0,column=0,ipadx=100,ipady=100)
+                    dupm1.clear()
+                    dupm2.clear()
+                    dupm5.clear()
+                    dupm10.clear()
+                    dupm13.clear()
+                    dupm16.clear()
+                lf.config(text="E-mail sent successfully!")
+                connect.quit()
+            except:
+                lf=Label(frame2f,text="E-mail not sent successfully!\n Please ttry again!",font=(" Verdana",12,"bold italic"),bg="#CA6F1E")
                 lf.grid(row=0,column=0,ipadx=100,ipady=100)
-                dupm1.clear()
-                dupm2.clear()
-                dupm5.clear()
-                dupm10.clear()
-                dupm13.clear()
-                dupm16.clear()
-            lf.config(text="E-mail sent successfully!")
-            connect.quit()
         
         butsub=Button(frame1f,text="SUBMIT",font=(" Verdana",12,"bold italic"),bg="#DC7633",command=sub)
         butsub.grid(row=6,column=0,columnspan=4,padx=10,pady=10)
@@ -401,4 +404,4 @@ def openxt(l,options):
     if options[5]==0:
         but6r.config(state=DISABLED)
 
-window.mainloop()
+mainwindow.mainloop()
