@@ -1,12 +1,14 @@
-NAME: QUESTION PAPER SETTER-SENDER
+# NAME: QUESTION PAPER SETTER-SENDER
 
-TITLE: Project to send question papers with random questions to the students in order to avoid plagiarism during online examinations.
+# TITLE: 
+    Project to send question papers with random questions to the students in order to avoid plagiarism during online examinations.
 
-PROBLEM IT SOLVES: The main aspect of creating this project is to avoid or reduce plagiarism that happens during online examinations.This project can be utilized by teachers/professors for conducting exams in online.When it comes to online examinations,if a question paper is posted in common via social media or other platforms,there are many chances for the students to circulate the answers among themselves.So to avoid this existing scenario in an effective manner this project plays a vital role as it sends random questions to the students.
+# PROBLEM IT SOLVES: 
+    The main aspect of creating this project is to avoid or reduce plagiarism that happens during online examinations.This project can be utilized by teachers/professors for conducting exams in online.When it comes to online examinations,if a question paper is posted in common via social media or other platforms,there are many chances for the students to circulate the answers among themselves.So to avoid this existing scenario in an effective manner this project plays a vital role as it sends random questions to the students.
 
 # SET UP:
 
-##      1)Download the exe file directly in our github repository and run it!
+##      1)Download the executable file(with ".exe" extension) directly in our github repository and run it!
 
             while running if windows defender found it malicious please turn it off or allow in your system
 
