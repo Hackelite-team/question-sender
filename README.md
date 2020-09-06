@@ -8,17 +8,17 @@ PROBLEM IT SOLVES: The main aspect of creating this project is to avoid or reduc
 
 ##      1)Download the exe file directly in our github repository and run it!
 
-        **while running if windows defender found it malicious please turn it off or allow in your system**
+            while running if windows defender found it malicious please turn it off or allow in your system
 
 ##      2)download the python file in our repository(with ".py" extension) and you can instantly run it!!
 
-          **you** **need** **to** **install** **python**
+            you need to install python
 
-          **additionally you may need to run the below mentioned commands in your "CMD"** 
+            additionally you may need to run the below mentioned commands in your "CMD" 
 
-           **i)pip install tkinter**
+                i)pip install tkinter
 
-           **ii)pip install smtplib**
+                ii)pip install smtplib
            
 DESCRIPTION: The project has three sections.
 
