@@ -22,7 +22,7 @@ The main aspect of creating this project is to avoid or reduce plagiarism that h
 
                 ii)pip install smtplib
            
-DESCRIPTION: The project has three sections.
+# DESCRIPTION: The project has three sections.
 
 ~In the first section,it collects the number of students in integer format and their respective mail id's for whom the questions have to be sent. It also collects the teacher's mail id,password and it enables the teacher to select the division of marks. After the first section,there will be a confirmation box regarding the entered details. 
 
